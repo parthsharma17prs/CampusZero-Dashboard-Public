@@ -1,0 +1,11 @@
+    </style>
+</head>
+<body>
+    <div id="grain"></div>
+    <div class="cursor" id="custom-cursor">
+        <div class="cursor-crosshair"></div>
+        <div class="cursor-crosshair h"></div>
+    </div>
+    <div class="cursor-ring" id="custom-cursor-ring"></div>
+    
+    <div class="app-layout">

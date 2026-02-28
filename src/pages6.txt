@@ -1,0 +1,148 @@
+    <!-- PAGE 9: CAMPUS FEED -->
+    <div id="page-feed" class="page">
+        <div class="dash-row-2">
+            <div style="display:flex; flex-direction:column; gap:20px">
+                <div class="card"><div style="display:flex;gap:12px;margin-bottom:12px"><div class="lb-ava" style="background:var(--cyan)">AS</div><div class="dr-main"><div class="dr-title" style="font-family:var(--font-heading)">Arjun Shah</div><div class="dr-sub" style="display:flex;gap:6px"><span>MBA</span><span>·</span><span>5min ago</span></div></div><div class="ac-badge">+75🪙</div></div><div style="font-family:var(--font-body);font-size:14px;margin-bottom:16px">Caught empty classroom lights in Block B — reported via AI Scanner! 💡</div><div style="display:flex;gap:12px"><button class="btn btn-outline" style="padding:4px 12px; font-size:12px" onclick="this.innerHTML='👍 '+ (parseInt(this.innerText.split(' ')[1]||0)+1)">👍 Like</button><button class="btn btn-outline" style="padding:4px 12px; font-size:12px" onclick="showToast('cyan', '💬', 'Comment feature coming soon!', 'Social Feature')">💬 Comment</button></div></div>
+                <div class="card"><div style="display:flex;gap:12px;margin-bottom:12px"><div class="lb-ava" style="background:var(--yellow)">NK</div><div class="dr-main"><div class="dr-title" style="font-family:var(--font-heading)">Neha Kulkarni</div><div class="dr-sub" style="display:flex;gap:6px"><span>MPSTME</span><span>·</span><span>12min ago</span></div></div><div class="ac-badge">+150🪙</div></div><div style="font-family:var(--font-body);font-size:14px;margin-bottom:16px">Lab AC running 2hrs with zero occupancy. Facilities called, resolved in 10 min! ❄️</div><div style="display:flex;gap:12px"><button class="btn btn-outline" style="padding:4px 12px; font-size:12px" onclick="this.innerHTML='👍 '+ (parseInt(this.innerText.split(' ')[1]||0)+1)">👍 4</button><button class="btn btn-outline" style="padding:4px 12px; font-size:12px" onclick="showToast('cyan', '💬', 'Comment feature coming soon!', 'Social Feature')">💬 Comment</button></div></div>
+                <div class="card" style="border:1px solid var(--accent); background:rgba(200,255,0,0.02)"><div style="display:flex;gap:12px;margin-bottom:12px"><div class="lb-ava" style="background:var(--accent)">🤖</div><div class="dr-main"><div class="dr-title text-acid" style="font-family:var(--font-heading)">Campus System</div><div class="dr-sub" style="display:flex;gap:6px"><span>System</span><span>·</span><span>18min ago</span></div></div></div><div style="font-family:var(--font-body);font-size:14px;margin-bottom:0">NMIMS Solar generating 124% of current demand ⚡ Surplus routing to EV Bay 3. Check App for solar peaks!</div></div>
+                <div class="card"><div style="display:flex;gap:12px;margin-bottom:12px"><div class="lb-ava" style="background:var(--accent)">PR</div><div class="dr-main"><div class="dr-title text-acid" style="font-family:var(--font-heading)">Priya Rathod <span class="text-fog">(You)</span></div><div class="dr-sub" style="display:flex;gap:6px"><span>MPSTME</span><span>·</span><span>1hr ago</span></div></div><div class="ac-badge">+100🪙</div></div><div style="font-family:var(--font-body);font-size:14px;margin-bottom:16px">Completed Streak Warrior challenge — 10 day streak! 🔥</div><div style="display:flex;gap:12px"><button class="btn btn-outline" style="padding:4px 12px; font-size:12px" onclick="this.innerHTML='👍 '+ (parseInt(this.innerText.split(' ')[1]||0)+1)">👍 12</button><button class="btn btn-outline" style="padding:4px 12px; font-size:12px" onclick="showToast('cyan', '💬', 'Comment feature coming soon!', 'Social Feature')">💬 Comment</button></div></div>
+                <div class="card"><div style="display:flex;gap:12px;margin-bottom:12px"><div class="lb-ava" style="background:var(--violet)">RM</div><div class="dr-main"><div class="dr-title" style="font-family:var(--font-heading)">Rohan Mehta</div><div class="dr-sub" style="display:flex;gap:6px"><span>Architecture</span><span>·</span><span>2hrs ago</span></div></div><div class="ac-badge">+200🪙</div></div><div style="font-family:var(--font-body);font-size:14px;margin-bottom:16px">5th AI scan this week → unlocked Scanner Pro badge! 📸</div><div style="display:flex;gap:12px"><button class="btn btn-outline" style="padding:4px 12px; font-size:12px" onclick="this.innerHTML='👍 '+ (parseInt(this.innerText.split(' ')[1]||0)+1)">👍 7</button><button class="btn btn-outline" style="padding:4px 12px; font-size:12px" onclick="showToast('cyan', '💬', 'Comment feature coming soon!', 'Social Feature')">💬 Comment</button></div></div>
+            </div>
+            
+            <div style="display:flex; flex-direction:column; gap:20px">
+                <div class="card">
+                    <div class="section-title text-accent">Upcoming Events</div>
+                    <div class="data-row"><div class="dr-icon">🌱</div><div class="dr-main"><div class="dr-title">Energy Hackathon</div><div class="dr-sub">Friday · 10 AM</div></div><button class="btn btn-primary" style="padding:4px 8px; font-size:10px" onclick="rsvp(this)">RSVP</button></div>
+                    <div class="data-row"><div class="dr-icon">🗣️</div><div class="dr-main"><div class="dr-title">Green Panel Talk</div><div class="dr-sub">Next Mon · 2 PM</div></div><button class="btn btn-primary" style="padding:4px 8px; font-size:10px" onclick="rsvp(this)">RSVP</button></div>
+                    <div class="data-row" style="border:none"><div class="dr-icon">♻️</div><div class="dr-main"><div class="dr-title">E-Waste Drive</div><div class="dr-sub">Next Wed · All Day</div></div><button class="btn btn-primary" style="padding:4px 8px; font-size:10px" onclick="rsvp(this)">RSVP</button></div>
+                </div>
+                
+                <div class="card" id="live-stats-card">
+                    <div class="section-title">LIVE CAMPUS STATS</div>
+                    <div class="data-row"><div class="dr-main"><div class="dr-title text-yellow">Solar Generation</div></div><div class="dr-right"><div class="dr-stat text-yellow" style="font-size:16px"><span id="ls-solar">124</span>kWh</div></div></div>
+                    <div class="data-row"><div class="dr-main"><div class="dr-title text-acid">Campus Energy Score</div></div><div class="dr-right"><div class="dr-stat text-acid" style="font-size:16px"><span id="ls-score">74</span>/100</div></div></div>
+                    <div class="data-row"><div class="dr-main"><div class="dr-title text-cyan">Active Students</div></div><div class="dr-right"><div class="dr-stat text-cyan" style="font-size:16px" id="ls-students">1,240</div></div></div>
+                    <div class="data-row" style="border:none"><div class="dr-main"><div class="dr-title text-coral">Waste Prevented Today</div></div><div class="dr-right"><div class="dr-stat text-coral" style="font-size:16px">₹<span id="ls-savings">12,400</span></div></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 10: MY ANALYTICS -->
+    <div id="page-analytics" class="page">
+        <div class="section-title text-cyan" style="font-size:24px">MY ANALYTICS</div>
+        <div class="dash-row-2">
+            <div class="card" style="padding:24px; position:relative">
+                <div class="dr-sub" style="margin-bottom:12px">WEEKLY COINS EARNED</div>
+                <canvas id="coinsChart" style="width:100%; height:140px; display:block"></canvas>
+                <div style="display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:10px; color:var(--fog); margin-top:8px">
+                    <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span class="text-acid">Sun</span>
+                </div>
+            </div>
+            
+            <div class="card" style="display:flex; flex-direction:column; align-items:center;">
+                <div class="dr-sub" style="align-self:flex-start">PERFORMANCE RADAR</div>
+                <canvas id="radarChart" width="260" height="260" style="margin-top:-20px"></canvas>
+            </div>
+        </div>
+        
+        <div class="dash-row-2">
+            <div class="card grid-2">
+                <div><div class="dr-sub" style="margin-bottom:4px">Best Single Day</div><div style="font-family:var(--font-heading);font-size:24px;color:var(--yellow)">890🪙</div></div>
+                <div><div class="dr-sub" style="margin-bottom:4px">Longest Streak</div><div style="font-family:var(--font-heading);font-size:24px;color:var(--coral)">23 days</div></div>
+                <div><div class="dr-sub" style="margin-bottom:4px">Most Scans (Day)</div><div style="font-family:var(--font-heading);font-size:24px;color:var(--cyan)">8 scans</div></div>
+                <div><div class="dr-sub" style="margin-bottom:4px">Most CO₂ Saved</div><div style="font-family:var(--font-heading);font-size:24px;color:var(--accent)">18.4kg</div></div>
+            </div>
+            
+            <div class="card">
+                <div class="dr-sub" style="margin-bottom:16px">ACTION BREAKDOWN</div>
+                <div style="display:flex; flex-direction:column; gap:12px">
+                    <div><div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;margin-bottom:4px"><span>Scanning</span><span class="text-acid">38%</span></div><div style="height:6px;background:rgba(255,255,255,0.1);border-radius:3px"><div style="height:100%;width:38%;background:var(--accent);border-radius:3px"></div></div></div>
+                    <div><div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;margin-bottom:4px"><span>Challenges</span><span class="text-cyan">28%</span></div><div style="height:6px;background:rgba(255,255,255,0.1);border-radius:3px"><div style="height:100%;width:28%;background:var(--cyan);border-radius:3px"></div></div></div>
+                    <div><div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;margin-bottom:4px"><span>Calls</span><span class="text-coral">18%</span></div><div style="height:6px;background:rgba(255,255,255,0.1);border-radius:3px"><div style="height:100%;width:18%;background:var(--coral);border-radius:3px"></div></div></div>
+                    <div><div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;margin-bottom:4px"><span>Social</span><span style="color:var(--violet)">10%</span></div><div style="height:6px;background:rgba(255,255,255,0.1);border-radius:3px"><div style="height:100%;width:10%;background:var(--violet);border-radius:3px"></div></div></div>
+                    <div><div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;margin-bottom:4px"><span>Other</span><span>6%</span></div><div style="height:6px;background:rgba(255,255,255,0.1);border-radius:3px"><div style="height:100%;width:6%;background:var(--fog);border-radius:3px"></div></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card grid-2" style="gap:24px">
+            <div>
+                <div class="chal-top" style="margin-bottom:4px"><div class="chal-title">Reach Rank #1</div><div class="text-acid" style="font-family:var(--font-mono);font-size:12px;font-weight:700">67%</div></div>
+                <div class="dr-sub" style="margin-bottom:8px; text-align:right">3 positions to go</div>
+                <div class="chal-prog-bg" style="height:8px"><div class="chal-prog-fill" style="width:67%"></div></div>
+            </div>
+            <div>
+                <div class="chal-top" style="margin-bottom:4px"><div class="chal-title">Save 200kg CO₂</div><div class="text-cyan" style="font-family:var(--font-mono);font-size:12px;font-weight:700">71%</div></div>
+                <div class="dr-sub" style="margin-bottom:8px; text-align:right">142/200 kg</div>
+                <div class="chal-prog-bg" style="height:8px"><div class="chal-prog-fill" style="width:71%; background:var(--cyan)"></div></div>
+            </div>
+            <div>
+                <div class="chal-top" style="margin-bottom:4px"><div class="chal-title">50 Total Scans</div><div class="text-yellow" style="font-family:var(--font-mono);font-size:12px;font-weight:700">46%</div></div>
+                <div class="dr-sub" style="margin-bottom:8px; text-align:right">23/50 scans</div>
+                <div class="chal-prog-bg" style="height:8px"><div class="chal-prog-fill" style="width:46%; background:var(--yellow)"></div></div>
+            </div>
+            <div>
+                <div class="chal-top" style="margin-bottom:4px"><div class="chal-title">25-Day Streak</div><div class="text-coral" style="font-family:var(--font-mono);font-size:12px;font-weight:700">48%</div></div>
+                <div class="dr-sub" style="margin-bottom:8px; text-align:right">12/25 days</div>
+                <div class="chal-prog-bg" style="height:8px"><div class="chal-prog-fill" style="width:48%; background:var(--coral)"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 11: PROFILE -->
+    <div id="page-profile" class="page">
+        <div class="dash-row-2">
+            <div class="card" style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:40px 20px">
+                <div class="sc-avatar" style="width:96px; height:96px; font-size:36px; margin-bottom:16px;">
+                    PR
+                    <div class="sc-avatar-ring"></div>
+                </div>
+                <div style="font-family:var(--font-heading); font-size:26px; font-weight:800; margin-bottom:4px">Priya Rathod</div>
+                <div style="font-family:var(--font-mono); font-size:12px; color:var(--fog); margin-bottom:4px">priya.rathod@nmims.edu</div>
+                <div style="font-family:var(--font-mono); font-size:11px; color:var(--fog); margin-bottom:20px">MPSTME · Computer Science · 3rd Year · NMIMS Mumbai</div>
+                
+                <div class="sc-lvl" style="font-size:12px; padding:4px 12px">⚡ LVL 7 — ECO CHAMPION</div>
+                <div class="sc-xp" style="max-width:300px; margin:0 auto 32px">
+                    <div class="xp-labels" style="font-size:11px"><span>XP 8240</span><span>Next 10000</span></div>
+                    <div class="xp-bar-bg" style="height:6px"><div class="xp-bar-fill"></div></div>
+                </div>
+
+                <div class="grid-3" style="gap:20px; width:100%; max-width:400px; margin-bottom:32px">
+                    <div style="background:var(--bg-panels); padding:16px; border-radius:12px; border:1px solid var(--border)">
+                        <div class="dr-sub" style="margin-bottom:8px">CO₂ Saved</div>
+                        <div class="text-cyan" style="font-family:var(--font-heading);font-size:24px">142kg</div>
+                    </div>
+                    <div style="background:var(--bg-panels); padding:16px; border-radius:12px; border:1px solid var(--border)">
+                        <div class="dr-sub" style="margin-bottom:8px">Day Streak</div>
+                        <div class="text-coral" style="font-family:var(--font-heading);font-size:24px">12</div>
+                    </div>
+                    <div style="background:var(--bg-panels); padding:16px; border-radius:12px; border:1px solid var(--border)">
+                        <div class="dr-sub" style="margin-bottom:8px">Total Scans</div>
+                        <div class="text-acid" style="font-family:var(--font-heading);font-size:24px">23</div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" style="padding:16px 24px" onclick="downloadGreenGpa()">Download Green GPA Card ⬇️</button>
+            </div>
+
+            <div class="card" style="padding:0">
+                <div class="section-title" style="padding:20px; border-bottom:1px solid var(--border); font-size:14px; letter-spacing:1px; color:var(--fog)">PREFERENCES</div>
+                <div style="padding:12px 20px">
+                    <div class="data-row" style="padding:16px 0"><div class="dr-main dr-title">Push Notifications</div><div class="toggle on" onclick="this.classList.toggle('on')"><div class="t-circ"></div></div></div>
+                    <div class="data-row" style="padding:16px 0"><div class="dr-main dr-title">AI Call Alerts</div><div class="toggle on" onclick="this.classList.toggle('on')"><div class="t-circ"></div></div></div>
+                    <div class="data-row" style="padding:16px 0"><div class="dr-main dr-title">Streak Reminders</div><div class="toggle on" onclick="this.classList.toggle('on')"><div class="t-circ"></div></div></div>
+                    <div class="data-row" style="padding:16px 0"><div class="dr-main dr-title">Solar Peak Alerts</div><div class="toggle on" onclick="this.classList.toggle('on')"><div class="t-circ"></div></div></div>
+                    <div class="data-row" style="padding:16px 0"><div class="dr-main dr-title">Challenge Updates</div><div class="toggle" onclick="this.classList.toggle('on')"><div class="t-circ"></div></div></div>
+                    <div class="data-row" style="border:none; padding:16px 0"><div class="dr-main dr-title">Campus Feed Emails</div><div class="toggle on" onclick="this.classList.toggle('on')"><div class="t-circ"></div></div></div>
+                </div>
+            </div>
+            
+            <style>
+                .toggle { width:44px; height:24px; background:var(--fog); border-radius:12px; position:relative; cursor:pointer; transition:var(--transition); opacity:0.6 }
+                .t-circ { width:20px; height:20px; background:white; border-radius:50%; position:absolute; top:2px; left:2px; transition:var(--transition); }
+                .toggle.on { background:var(--accent); opacity:1; }
+                .toggle.on .t-circ { left:22px; background:#000; }
+            </style>
+        </div>
+    </div>

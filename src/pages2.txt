@@ -1,0 +1,71 @@
+    <!-- PAGE 2: LEADERBOARD -->
+    <div id="page-leaderboard" class="page">
+        <div class="section-head">
+            <div class="section-title text-acid" style="font-size:24px">CAMPUS LEADERBOARD</div>
+            <select style="background:var(--bg-panels);color:white;border:1px solid var(--border);padding:8px;border-radius:6px;font-family:var(--font-mono);">
+                <option>Overall</option><option>MPSTME</option><option>Hostel D</option><option>This Week</option><option>This Month</option>
+            </select>
+        </div>
+
+        <div style="display:flex; justify-content:center; align-items:flex-end; gap:20px; margin: 40px 0;">
+            <div style="display:flex; flex-direction:column; align-items:center;">
+                <div style="font-size:24px; margin-bottom:10px">🥈</div>
+                <div class="inc-ava" style="width:64px; height:64px; background:var(--cyan); font-size:20px; border:2px solid silver; margin-bottom:12px">AS</div>
+                <div style="font-family:var(--font-heading); font-size:14px; margin-bottom:4px">Arjun Shah</div>
+                <div style="font-family:var(--font-mono); font-size:12px; color:var(--cyan); margin-bottom:12px">4,980 🪙</div>
+                <div style="width:80px; height:60px; background:rgba(255,255,255,0.1); border-radius:8px 8px 0 0"></div>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:center; transform:translateY(-20px)">
+                <div style="font-size:32px; margin-bottom:10px; animation:bounce 2s infinite">🥇</div>
+                <div class="inc-ava" style="width:80px; height:80px; background:var(--yellow); font-size:28px; border:3px solid gold; box-shadow:0 0 40px rgba(255,215,0,0.4); margin-bottom:12px">NK</div>
+                <div style="font-family:var(--font-heading); font-size:18px; color:gold; margin-bottom:4px">Neha Kulkarni</div>
+                <div style="font-family:var(--font-mono); font-size:14px; color:var(--yellow); margin-bottom:12px; font-weight:700">5,120 🪙</div>
+                <div style="width:100px; height:80px; background:rgba(255,215,0,0.1); border:1px solid rgba(255,215,0,0.3); border-radius:8px 8px 0 0; border-bottom:none"></div>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:center;">
+                <div style="font-size:24px; margin-bottom:10px">🥉</div>
+                <div class="inc-ava" style="width:60px; height:60px; background:var(--accent); font-size:18px; border:2px solid #cd7f32; margin-bottom:12px; position:relative;">
+                    PR
+                    <div style="position:absolute; top:-2px;left:-2px;right:-2px;bottom:-2px;border:2px solid var(--accent);border-radius:50%;opacity:0.6;animation:pulse 2s infinite"></div>
+                </div>
+                <div style="font-family:var(--font-heading); font-size:14px; color:var(--accent); margin-bottom:4px">Priya Rathod</div>
+                <div style="font-family:var(--font-mono); font-size:12px; color:var(--accent); margin-bottom:12px">4,820 🪙</div>
+                <div style="width:80px; height:50px; background:rgba(255,255,255,0.05); border-radius:8px 8px 0 0; border:1px solid var(--border); border-bottom:none"></div>
+            </div>
+        </div>
+
+        <div class="dash-row-2">
+            <div class="card" style="display:flex; flex-direction:column; gap:8px">
+                <div class="lb-row"><div class="lb-rank gold">1</div><div class="lb-ava" style="background:var(--yellow)">NK</div><div class="lb-info"><div class="lb-name">Neha Kulkarni</div><div class="lb-dept">MPSTME</div></div><div class="lb-coins text-yellow">5,120 🪙</div></div>
+                <div class="lb-row"><div class="lb-rank silver">2</div><div class="lb-ava" style="background:var(--cyan)">AS</div><div class="lb-info"><div class="lb-name">Arjun Shah</div><div class="lb-dept">MBA</div></div><div class="lb-coins text-cyan">4,980 🪙</div></div>
+                <div class="lb-row me"><div class="lb-rank bronze">3</div><div class="lb-ava" style="background:var(--accent)">PR</div><div class="lb-info"><div class="lb-name">Priya Rathod <span class="text-acid">(YOU)</span></div><div class="lb-dept">MPSTME</div></div><div class="lb-coins text-acid">4,820 🪙</div></div>
+                <div class="lb-row"><div class="lb-rank">4</div><div class="lb-ava" style="background:var(--violet)">RM</div><div class="lb-info"><div class="lb-name">Rohan Mehta</div><div class="lb-dept">Architecture</div></div><div class="lb-coins">4,100 🪙</div></div>
+                <div class="lb-row"><div class="lb-rank">5</div><div class="lb-ava" style="background:var(--coral)">KS</div><div class="lb-info"><div class="lb-name">Kavya Singh</div><div class="lb-dept">Law</div></div><div class="lb-coins">3,850 🪙</div></div>
+                <div class="lb-row"><div class="lb-rank">6</div><div class="lb-ava" style="background:var(--fog)">IP</div><div class="lb-info"><div class="lb-name">Ishan Patel</div><div class="lb-dept">Pharmacy</div></div><div class="lb-coins">3,600 🪙</div></div>
+                <div class="lb-row"><div class="lb-rank">7</div><div class="lb-ava" style="background:var(--fog)">SS</div><div class="lb-info"><div class="lb-name">Sneha Sharma</div><div class="lb-dept">Science</div></div><div class="lb-coins">3,420 🪙</div></div>
+                <div class="lb-row"><div class="lb-rank">8</div><div class="lb-ava" style="background:var(--fog)">AJ</div><div class="lb-info"><div class="lb-name">Aman Jain</div><div class="lb-dept">Commerce</div></div><div class="lb-coins">3,100 🪙</div></div>
+                <div class="lb-row"><div class="lb-rank">9</div><div class="lb-ava" style="background:var(--fog)">TG</div><div class="lb-info"><div class="lb-name">Tanya Gupta</div><div class="lb-dept">MPSTME</div></div><div class="lb-coins">2,950 🪙</div></div>
+                <div class="lb-row"><div class="lb-rank">10</div><div class="lb-ava" style="background:var(--fog)">VK</div><div class="lb-info"><div class="lb-name">Varun Kumar</div><div class="lb-dept">MBA</div></div><div class="lb-coins">2,880 🪙</div></div>
+            </div>
+            
+            <div style="display:flex; flex-direction:column; gap:20px">
+                <div class="card" style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:40px 20px">
+                    <div class="section-title text-fog" style="margin-bottom:8px">YOUR POSITION</div>
+                    <div style="font-family:var(--font-heading); font-size:64px; font-weight:800; color:var(--accent); line-height:1; margin-bottom:4px">#3</div>
+                    <div class="text-fog" style="margin-bottom:20px">of 4,200 students</div>
+                    <div style="background:var(--accent-dim); border:1px solid var(--accent); color:var(--accent); font-family:var(--font-mono); font-size:12px; padding:12px; border-radius:8px; margin-bottom:12px">300 coins to reach #2 🏆</div>
+                    <div class="delta-chip up">↑ Moved up 2 positions this week</div>
+                </div>
+
+                <div class="card">
+                    <div class="section-title text-cyan" style="margin-bottom:16px">DEPT. BATTLE</div>
+                    <div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;margin-bottom:4px"><span>MPSTME</span><span class="text-acid">14,200 🪙</span></div><div style="height:6px;background:rgba(255,255,255,0.1);border-radius:3px"><div style="height:100%;width:100%;background:var(--accent);border-radius:3px"></div></div></div>
+                    <div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;margin-bottom:4px"><span>MBA</span><span class="text-cyan">12,500 🪙</span></div><div style="height:6px;background:rgba(255,255,255,0.1);border-radius:3px"><div style="height:100%;width:85%;background:var(--cyan);border-radius:3px"></div></div></div>
+                    <div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;margin-bottom:4px"><span>Architecture</span><span style="color:var(--violet)">11,100 🪙</span></div><div style="height:6px;background:rgba(255,255,255,0.1);border-radius:3px"><div style="height:100%;width:75%;background:var(--violet);border-radius:3px"></div></div></div>
+                    <div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;margin-bottom:4px"><span>Law</span><span class="text-coral">8,400 🪙</span></div><div style="height:6px;background:rgba(255,255,255,0.1);border-radius:3px"><div style="height:100%;width:60%;background:var(--coral);border-radius:3px"></div></div></div>
+                    <div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;margin-bottom:4px"><span>Pharmacy</span><span class="text-yellow">7,200 🪙</span></div><div style="height:6px;background:rgba(255,255,255,0.1);border-radius:3px"><div style="height:100%;width:50%;background:var(--yellow);border-radius:3px"></div></div></div>
+                    <div><div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;margin-bottom:4px"><span>Science</span><span class="text-fog">5,900 🪙</span></div><div style="height:6px;background:rgba(255,255,255,0.1);border-radius:3px"><div style="height:100%;width:40%;background:white;border-radius:3px"></div></div></div>
+                </div>
+            </div>
+        </div>
+    </div>

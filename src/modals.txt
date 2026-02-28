@@ -1,0 +1,20 @@
+    <!-- MODALS & TOASTS -->
+    <div class="modal-overlay" id="solar-spin-modal">
+        <div class="modal">
+            <div class="modal-close" onclick="closeModal('solar-spin-modal')">✕</div>
+            <h2 style="font-family:var(--font-heading); font-size:24px; color:var(--accent); margin-bottom:8px">☀️ SOLAR SPIN</h2>
+            <p style="font-size:12px; color:var(--fog); margin-bottom:24px">Solar is generating surplus energy — spin to win bonus GreenCoins!</p>
+            <div id="spin-emoji" style="font-size:80px; margin-bottom:24px; transition:var(--transition)">🎁</div>
+            <button class="btn btn-primary" id="spin-btn" style="width:100%; padding:16px" onclick="triggerSpin()">SPIN NOW</button>
+            <div id="spin-result" style="font-family:var(--font-heading); font-size:20px; color:var(--accent); margin-top:16px; display:none"></div>
+        </div>
+    </div>
+
+    <!-- PROFILE DROPDOWN (Positioned relative to avatar via JS or fixed CSS, keeping it simple here) -->
+    <div id="profile-dropdown" class="notif-dropdown" style="top:50px; right:24px; width:220px;">
+        <div class="notif-item" onclick="navTo('profile'); toggleProfileMenu()">👤 view Profile</div>
+        <div class="notif-item" style="color:var(--coral)" onclick="showToast('coral', '👋', 'Signed out successfully.', 'See you soon!')">🚪 Sign Out</div>
+    </div>
+
+    <div id="toast-container"></div>
+</div> <!-- End of .main -->

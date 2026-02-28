@@ -1,0 +1,105 @@
+<!-- Topbar -->
+<div class="topbar">
+    <div class="brand">CAMPUS<span>·</span>ZERO</div>
+    <div class="search-bar">
+        <span class="search-kbd">⌘K</span>
+        <input type="text" id="searchInput" placeholder="Search features, rooms, agents...">
+    </div>
+    <div class="top-right">
+        <div class="live-status">
+            <div class="dot"></div> <span id="top-status-text">Solar 847kWh · 6 agents</span>
+        </div>
+        <div class="greencoin-badge" onclick="navTo('wallet')">
+            🪙 <span id="coin-balance-top">0</span>
+        </div>
+        <div class="bell" onclick="toggleNotif(event)">
+            🔔
+            <div class="bell-count" id="bell-count">3</div>
+            
+            <div class="notif-dropdown" id="notif-dropdown">
+                <div class="notif-header">
+                    Notifications <a onclick="markAllRead(event)">Mark all read</a>
+                </div>
+                <!-- Notifs populated by JS -->
+                <div id="notif-list"></div>
+            </div>
+        </div>
+        <div class="avatar" onclick="toggleProfileMenu(event)">PR</div>
+    </div>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="student-card">
+        <div class="sc-avatar">
+            PR
+            <div class="sc-avatar-ring"></div>
+        </div>
+        <div class="sc-name">Priya Rathod</div>
+        <div class="sc-dept">MPSTME · CSE · 3rd Year</div>
+        <div class="sc-lvl">⚡ LVL 7 — ECO CHAMPION</div>
+        <div class="sc-xp">
+            <div class="xp-labels"><span>XP 8240</span><span>Next 10000</span></div>
+            <div class="xp-bar-bg"><div class="xp-bar-fill"></div></div>
+        </div>
+    </div>
+
+    <div class="streak-widget">
+        <div class="sw-title">🔥 12-DAY STREAK</div>
+        <div class="sw-days">
+            <div class="sw-day done">M</div>
+            <div class="sw-day done">T</div>
+            <div class="sw-day done">W</div>
+            <div class="sw-day done">T</div>
+            <div class="sw-day done">F</div>
+            <div class="sw-day done">S</div>
+            <div class="sw-day today">S</div>
+        </div>
+        <div class="sw-sub">Keep it alive — 6hrs left</div>
+    </div>
+
+    <div class="sidebar-section">
+        <div class="sidebar-label">MAIN</div>
+        <a class="nav-item active" data-target="dashboard" onclick="navTo('dashboard')">
+            <div class="nav-icon">⚡</div><div class="nav-text">Dashboard</div>
+        </a>
+        <a class="nav-item" data-target="leaderboard" onclick="navTo('leaderboard')">
+            <div class="nav-icon">🏆</div><div class="nav-text">Leaderboard</div><div class="nav-badge">3</div>
+        </a>
+        <a class="nav-item" data-target="challenges" onclick="navTo('challenges')">
+            <div class="nav-icon">🎯</div><div class="nav-text">Challenges</div><div class="nav-badge red">4 NEW</div>
+        </a>
+        <a class="nav-item" data-target="scanner" onclick="navTo('scanner')">
+            <div class="nav-icon">📸</div><div class="nav-text">AI Scanner</div>
+        </a>
+        <a class="nav-item" data-target="callcenter" onclick="navTo('callcenter')">
+            <div class="nav-icon">📞</div><div class="nav-text">Call Center</div><div class="nav-badge red">2 Missed</div>
+        </a>
+    </div>
+
+    <div class="sidebar-section">
+        <div class="sidebar-label">EARN</div>
+        <a class="nav-item" data-target="wallet" onclick="navTo('wallet')">
+            <div class="nav-icon">🪙</div><div class="nav-text">GreenCoins</div>
+        </a>
+        <a class="nav-item" data-target="shop" onclick="navTo('shop')">
+            <div class="nav-icon">🛍️</div><div class="nav-text">Reward Shop</div>
+        </a>
+        <a class="nav-item" data-target="badges" onclick="navTo('badges')">
+            <div class="nav-icon">🎖️</div><div class="nav-text">Badges</div>
+        </a>
+    </div>
+
+    <div class="sidebar-section">
+        <div class="sidebar-label">CAMPUS</div>
+        <a class="nav-item" data-target="feed" onclick="navTo('feed')">
+            <div class="nav-icon">📢</div><div class="nav-text">Campus Feed</div>
+        </a>
+        <a class="nav-item" data-target="analytics" onclick="navTo('analytics')">
+            <div class="nav-icon">📊</div><div class="nav-text">My Analytics</div>
+        </a>
+        <a class="nav-item" data-target="profile" onclick="navTo('profile')">
+            <div class="nav-icon">👤</div><div class="nav-text">Profile</div>
+        </a>
+    </div>
+</div>

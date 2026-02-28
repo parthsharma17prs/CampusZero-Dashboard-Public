@@ -1,0 +1,119 @@
+<div class="main">
+
+    <!-- PAGE 1: DASHBOARD -->
+    <div id="page-dashboard" class="page active">
+        <div class="hero-greeting">
+            <div>
+                <h1>GOOD MORNING, PRIYA 👋</h1>
+                <div class="hero-sub">Sunday March 1 · <div class="dot"></div> 6 AI agents active · NMIMS Solar generating 847 kWh</div>
+            </div>
+            <button class="btn btn-primary" onclick="openSolarSpin()">☀️ SOLAR SPIN</button>
+        </div>
+
+        <div class="grid-4">
+            <div class="card stat-card accent-hover">
+                <div class="stat-label">CARBON SCORE</div>
+                <div class="stat-val acid">87<span>/100</span></div>
+                <div class="stat-sub">Overall Rating <span class="delta-chip up">↑ +8 this week</span></div>
+            </div>
+            <div class="card stat-card accent-hover">
+                <div class="stat-label">GREENCOIN BALANCE</div>
+                <div class="stat-val">4820<span>🪙</span></div>
+                <div class="stat-sub">Total earned <span class="delta-chip up">↑ +340 today</span></div>
+            </div>
+            <div class="card stat-card accent-hover">
+                <div class="stat-label">CO₂ AVOIDED</div>
+                <div class="stat-val cyan">142<span>kg</span></div>
+                <div class="stat-sub">This semester <span class="delta-chip up" style="color:var(--cyan); background:rgba(0,212,255,0.1)">↑ +12kg week</span></div>
+            </div>
+            <div class="card stat-card accent-hover">
+                <div class="stat-label">CAMPUS RANK</div>
+                <div class="stat-val coral">#3</div>
+                <div class="stat-sub">of 4,200 students <span class="delta-chip up-coral">↑ moved up 2</span></div>
+            </div>
+        </div>
+
+        <div class="card energy-map-card">
+            <canvas id="energyMapCanvas"></canvas>
+            <div class="map-legend">
+                <div class="legend-item"><div class="dot" style="background:rgba(200,255,0,0.5)"></div> Efficient</div>
+                <div class="legend-item"><div class="dot" style="background:#555"></div> Normal</div>
+                <div class="legend-item"><div class="dot coral"></div> Waste Detected</div>
+                <div class="legend-item"><div class="dot" style="background:var(--cyan)"></div> Solar Surplus</div>
+            </div>
+        </div>
+
+        <div class="dash-row-2">
+            <div class="card">
+                <div class="section-head">
+                    <div class="section-title">TOP STUDENTS</div>
+                    <button class="btn btn-outline" style="padding:4px 8px; font-size:10px" onclick="navTo('leaderboard')">View All</button>
+                </div>
+                <div class="mini-lb">
+                    <div class="lb-row"><div class="lb-rank gold">1</div><div class="lb-ava" style="background:var(--yellow)">NK</div><div class="lb-info"><div class="lb-name">Neha Kulkarni</div><div class="lb-dept">MPSTME</div></div><div class="lb-coins">5120 🪙</div></div>
+                    <div class="lb-row"><div class="lb-rank silver">2</div><div class="lb-ava" style="background:var(--cyan)">AS</div><div class="lb-info"><div class="lb-name">Arjun Shah</div><div class="lb-dept">MBA</div></div><div class="lb-coins">4980 🪙</div></div>
+                    <div class="lb-row me"><div class="lb-rank bronze">3</div><div class="lb-ava" style="background:var(--accent)">PR</div><div class="lb-info"><div class="lb-name">Priya Rathod <span class="text-acid">(YOU)</span></div><div class="lb-dept">MPSTME</div></div><div class="lb-coins text-acid">4820 🪙</div></div>
+                    <div class="lb-row"><div class="lb-rank">4</div><div class="lb-ava" style="background:var(--violet)">RM</div><div class="lb-info"><div class="lb-name">Rohan Mehta</div><div class="lb-dept">Architecture</div></div><div class="lb-coins">4100 🪙</div></div>
+                    <div class="lb-row"><div class="lb-rank">5</div><div class="lb-ava" style="background:var(--coral)">KS</div><div class="lb-info"><div class="lb-name">Kavya Singh</div><div class="lb-dept">Law</div></div><div class="lb-coins">3850 🪙</div></div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="section-title" style="margin-bottom:16px;">MY METRICS</div>
+                <div class="mini-charts">
+                    <div class="mini-chart-row">
+                        <div class="mcr-info"><h5>MY ACTIONS</h5><div class="val text-acid">24</div></div>
+                        <div class="mcr-bars">
+                            <div class="mcr-bar" style="height:40%"></div><div class="mcr-bar" style="height:60%"></div><div class="mcr-bar" style="height:30%"></div><div class="mcr-bar" style="height:80%"></div><div class="mcr-bar" style="height:50%"></div><div class="mcr-bar" style="height:70%"></div><div class="mcr-bar" style="height:100%; background:var(--accent)"></div>
+                        </div>
+                    </div>
+                    <div class="mini-chart-row">
+                        <div class="mcr-info"><h5>DEPT ENERGY</h5><div class="val text-cyan">-14%</div></div>
+                        <div class="mcr-bars">
+                            <div class="mcr-bar" style="height:100%"></div><div class="mcr-bar" style="height:90%"></div><div class="mcr-bar" style="height:80%"></div><div class="mcr-bar" style="height:85%"></div><div class="mcr-bar" style="height:70%"></div><div class="mcr-bar" style="height:60%"></div><div class="mcr-bar" style="height:40%; background:var(--cyan)"></div>
+                        </div>
+                    </div>
+                    <div class="mini-chart-row" style="border:none">
+                        <div class="mcr-info"><h5>CO₂ SAVED</h5><div class="val text-coral">142kg</div></div>
+                        <div class="mcr-bars">
+                            <div class="mcr-bar" style="height:20%"></div><div class="mcr-bar" style="height:30%"></div><div class="mcr-bar" style="height:40%"></div><div class="mcr-bar" style="height:30%"></div><div class="mcr-bar" style="height:60%"></div><div class="mcr-bar" style="height:80%"></div><div class="mcr-bar" style="height:100%; background:var(--coral)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-head" style="margin-top:8px">
+            <div class="section-title text-acid">ACTIVE CHALLENGES</div>
+            <button class="btn btn-outline" onclick="navTo('challenges')">View All Challenges →</button>
+        </div>
+        <div class="grid-3">
+            <div class="chal-card">
+                <div class="chal-top"><div class="chal-title text-coral">DARK HOUR FRIDAY</div><div class="chal-reward">200🪙</div></div>
+                <div class="chal-desc">Power down non-essentials for 1hr. Campus-Wide.</div>
+                <div class="chal-prog-wrap">
+                    <div class="chal-prog-bg"><div class="chal-prog-fill" style="width:60%; background:var(--coral)"></div></div>
+                    <div class="chal-prog-info"><span>60%</span><span>Fri 5PM</span></div>
+                </div>
+                <div class="chal-bot"><div class="chal-timer">⏰ 3 days left</div><button class="btn btn-primary" onclick="join(this, 200)">JOIN</button></div>
+            </div>
+            <div class="chal-card">
+                <div class="chal-top"><div class="chal-title text-acid">AI SCANNER PRO</div><div class="chal-reward">150🪙</div></div>
+                <div class="chal-desc">Submit 5 verified waste scans using AI.</div>
+                <div class="chal-prog-wrap">
+                    <div class="chal-prog-bg"><div class="chal-prog-fill" style="width:60%"></div></div>
+                    <div class="chal-prog-info"><span>3/5 scans</span><span>Weekly</span></div>
+                </div>
+                <div class="chal-bot"><div class="chal-timer">⏰ 4 days left</div><button class="btn btn-primary" onclick="join(this, 150)">JOIN</button></div>
+            </div>
+            <div class="chal-card">
+                <div class="chal-top"><div class="chal-title text-cyan">STREAK KEEPER</div><div class="chal-reward">100🪙</div></div>
+                <div class="chal-desc">Login 7 days straight to earn bonus.</div>
+                <div class="chal-prog-wrap">
+                    <div class="chal-prog-bg"><div class="chal-prog-fill" style="width:71%; background:var(--cyan)"></div></div>
+                    <div class="chal-prog-info"><span>5/7 days</span><span>Daily</span></div>
+                </div>
+                <div class="chal-bot"><div class="chal-timer">⏰ 5hrs left</div><button class="btn btn-primary" onclick="join(this, 100)">JOIN</button></div>
+            </div>
+        </div>
+    </div>

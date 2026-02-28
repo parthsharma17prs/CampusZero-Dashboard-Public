@@ -1,0 +1,72 @@
+    <!-- PAGE 6: GREENCOIN WALLET -->
+    <div id="page-wallet" class="page">
+        <div class="grid-2">
+            <div class="card" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:40px">
+                <div class="section-title text-fog" style="font-family:var(--font-mono); margin-bottom:12px">GREENCOIN BALANCE</div>
+                <div style="font-family:var(--font-heading); font-size:80px; font-weight:800; color:var(--accent); line-height:1; margin-bottom:12px" id="wallet-balance">0</div>
+                <div style="font-size:32px; margin-bottom:32px; animation:bounce 2s infinite">🪙</div>
+                
+                <div style="display:flex; gap:20px; width:100%; margin-bottom:32px">
+                    <div style="flex:1; background:rgba(200,255,0,0.05); border:1px solid rgba(200,255,0,0.2); padding:16px; border-radius:8px">
+                        <div class="dr-sub" style="margin-bottom:8px">Total Earned</div>
+                        <div class="text-acid" style="font-family:var(--font-mono); font-size:16px; font-weight:700">+12,400</div>
+                    </div>
+                    <div style="flex:1; background:rgba(255,107,74,0.05); border:1px solid rgba(255,107,74,0.2); padding:16px; border-radius:8px">
+                        <div class="dr-sub" style="margin-bottom:8px">Total Spent</div>
+                        <div class="text-coral" style="font-family:var(--font-mono); font-size:16px; font-weight:700">-7,580</div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" style="width:100%; padding:16px" onclick="navTo('shop')">Visit Reward Shop →</button>
+            </div>
+            
+            <div class="card" style="padding:0">
+                <div class="section-title" style="padding:20px; border-bottom:1px solid var(--border)">Transaction History</div>
+                <div class="data-row"><div class="dr-icon">📸</div><div class="dr-main"><div class="dr-title">AI Scanner — Lab Waste Report</div><div class="dr-sub">Chemistry Lab</div></div><div class="dr-right"><div class="dr-stat acid">+150🪙</div><div class="dr-sub">Today</div></div></div>
+                <div class="data-row"><div class="dr-icon">🎯</div><div class="dr-main"><div class="dr-title">Challenge Complete — Streak Keeper</div><div class="dr-sub">7-day streak</div></div><div class="dr-right"><div class="dr-stat acid">+100🪙</div><div class="dr-sub">Today</div></div></div>
+                <div class="data-row"><div class="dr-icon">🛍️</div><div class="dr-main"><div class="dr-title">Redeemed: Canteen 20% Off</div><div class="dr-sub">Used at lunch</div></div><div class="dr-right"><div class="dr-stat coral">-50🪙</div><div class="dr-sub">Yesterday</div></div></div>
+                <div class="data-row"><div class="dr-icon">📞</div><div class="dr-main"><div class="dr-title">Call Report — Lab AC Empty</div><div class="dr-sub">Verified by team</div></div><div class="dr-right"><div class="dr-stat acid">+75🪙</div><div class="dr-sub">Yesterday</div></div></div>
+                <div class="data-row"><div class="dr-icon">🔥</div><div class="dr-main"><div class="dr-title">Streak Bonus — 10 Days</div><div class="dr-sub">Milestone reward</div></div><div class="dr-right"><div class="dr-stat acid">+200🪙</div><div class="dr-sub">2 days ago</div></div></div>
+                <div class="data-row" style="border:none"><div class="dr-icon">🛍️</div><div class="dr-main"><div class="dr-title">Redeemed: 50 Print Pages</div><div class="dr-sub">Library credited</div></div><div class="dr-right"><div class="dr-stat coral">-200🪙</div><div class="dr-sub">3 days ago</div></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 7: REWARD SHOP -->
+    <div id="page-shop" class="page">
+        <div class="section-head"><div class="section-title">REWARD SHOP</div><div class="greencoin-badge">🪙 4,820 available</div></div>
+        <div class="grid-3" style="gap:24px">
+            <div class="card shop-card"><div class="emoji">🍽️</div><h4>Canteen 20% Off</h4><p>Valid at Main Canteen today</p><div class="shop-price">50 🪙</div><br><button class="btn btn-primary" onclick="redeem('Canteen 20% Off', 50)">REDEEM</button></div>
+            <div class="card shop-card"><div class="emoji">🖨️</div><h4>50 Print Pages</h4><p>Added to Library ID instantly</p><div class="shop-price">200 🪙</div><br><button class="btn btn-primary" onclick="redeem('50 Print Pages', 200)">REDEEM</button></div>
+            <div class="card shop-card"><div class="emoji">🛏️</div><h4>Priority Hostel</h4><p>Extra points for room choice</p><div class="shop-price">500 🪙</div><br><button class="btn btn-primary" onclick="redeem('Priority Hostel', 500)">REDEEM</button></div>
+            <div class="card shop-card"><div class="emoji">📱</div><h4>Zomato ₹100</h4><p>Gift voucher via email</p><div class="shop-price">300 🪙</div><br><button class="btn btn-primary" onclick="redeem('Zomato ₹100', 300)">REDEEM</button></div>
+            <div class="card shop-card"><div class="emoji">🎟️</div><h4>Event Priority</h4><p>VIP seating at next event</p><div class="shop-price">250 🪙</div><br><button class="btn btn-primary" onclick="redeem('Event Priority Seat', 250)">REDEEM</button></div>
+            <div class="card shop-card"><div class="emoji" style="filter:grayscale(1)">📚</div><h4 style="color:var(--fog)">Elective Priority</h4><p>Get first pick for tech electives</p><div class="shop-price" style="background:rgba(255,255,255,0.05); color:var(--fog)">800 🪙</div><br><button class="btn btn-primary" disabled style="background:var(--bg-panels);color:var(--fog)">Out of Stock</button></div>
+            <div class="card shop-card"><div class="emoji">🎬</div><h4>BookMyShow ₹150</h4><p>Digital movie voucher</p><div class="shop-price">400 🪙</div><br><button class="btn btn-primary" onclick="redeem('BookMyShow ₹150', 400)">REDEEM</button></div>
+            <div class="card shop-card"><div class="emoji">☕</div><h4>Starbucks ₹200</h4><p>Coffee on CampusZero</p><div class="shop-price">350 🪙</div><br><button class="btn btn-primary" onclick="redeem('Starbucks ₹200', 350)">REDEEM</button></div>
+            <div class="card shop-card"><div class="emoji">📶</div><h4>WiFi +100MB</h4><p>Boost your daily quota</p><div class="shop-price">150 🪙</div><br><button class="btn btn-primary" onclick="redeem('WiFi +100MB', 150)">REDEEM</button></div>
+        </div>
+    </div>
+
+    <!-- PAGE 8: BADGES -->
+    <div id="page-badges" class="page">
+        <div class="section-head"><div class="section-title text-accent">MY BADGES</div><div class="dr-sub" style="font-size:12px;font-weight:700">9 / 15 EARNED</div></div>
+        <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:20px">
+            <!-- Earned -->
+            <div class="card shop-card accent-hover" style="cursor:pointer" onclick="badgeToast('🌍 Eco Champion', 'Reach top 10 on campus leaderboard.')"><div class="emoji">🌍</div><div style="font-family:var(--font-mono);font-size:10px">Eco Champion</div></div>
+            <div class="card shop-card accent-hover" style="cursor:pointer" onclick="badgeToast('🔦 Light Watcher', 'Reported 10 unneeded lights.')"><div class="emoji">🔦</div><div style="font-family:var(--font-mono);font-size:10px">Light Watcher</div></div>
+            <div class="card shop-card accent-hover" style="cursor:pointer" onclick="badgeToast('❄️ AC Guardian', 'Reported empty running ACs.')"><div class="emoji">❄️</div><div style="font-family:var(--font-mono);font-size:10px">AC Guardian</div></div>
+            <div class="card shop-card accent-hover" style="cursor:pointer" onclick="badgeToast('🔥 Streak Warrior', 'Maintained a 10-day streak.')"><div class="emoji">🔥</div><div style="font-family:var(--font-mono);font-size:10px">Streak Warrior</div></div>
+            <div class="card shop-card accent-hover" style="cursor:pointer" onclick="badgeToast('🏆 Week Champion', 'Scored highest in MPSTME a week.')"><div class="emoji">🏆</div><div style="font-family:var(--font-mono);font-size:10px">Week Champion</div></div>
+            <div class="card shop-card accent-hover" style="cursor:pointer" onclick="badgeToast('📸 Scanner Pro', 'Completed 20 verified scans.')"><div class="emoji">📸</div><div style="font-family:var(--font-mono);font-size:10px">Scanner Pro</div></div>
+            <div class="card shop-card accent-hover" style="cursor:pointer" onclick="badgeToast('☀️ Solar Star', 'Checked app during solar peaks.')"><div class="emoji">☀️</div><div style="font-family:var(--font-mono);font-size:10px">Solar Star</div></div>
+            <div class="card shop-card accent-hover" style="cursor:pointer" onclick="badgeToast('🧪 Lab Sentinel', 'Conserved lab energy.')"><div class="emoji">🧪</div><div style="font-family:var(--font-mono);font-size:10px">Lab Sentinel</div></div>
+            <div class="card shop-card accent-hover" style="cursor:pointer" onclick="badgeToast('🌱 First Step', 'Earned your first 100 coins.')"><div class="emoji">🌱</div><div style="font-family:var(--font-mono);font-size:10px">First Step</div></div>
+            <!-- Locked -->
+            <div class="card shop-card" style="cursor:pointer;opacity:0.3;filter:grayscale(1)" onclick="lockedBadgeToast('Report 5 water leakages.')"><div class="emoji">🔒</div><div style="font-family:var(--font-mono);font-size:10px">Water Warden</div></div>
+            <div class="card shop-card" style="cursor:pointer;opacity:0.3;filter:grayscale(1)" onclick="lockedBadgeToast('Complete 50 actions.')"><div class="emoji">🔒</div><div style="font-family:var(--font-mono);font-size:10px">Energy Ninja</div></div>
+            <div class="card shop-card" style="cursor:pointer;opacity:0.3;filter:grayscale(1)" onclick="lockedBadgeToast('Save 500kg of CO2.')"><div class="emoji">🔒</div><div style="font-family:var(--font-mono);font-size:10px">Carbon Crusher</div></div>
+            <div class="card shop-card" style="cursor:pointer;opacity:0.3;filter:grayscale(1)" onclick="lockedBadgeToast('Refer 3 students.')"><div class="emoji">🔒</div><div style="font-family:var(--font-mono);font-size:10px">Green Mentor</div></div>
+            <div class="card shop-card" style="cursor:pointer;opacity:0.3;filter:grayscale(1)" onclick="lockedBadgeToast('Complete 20 challenges.')"><div class="emoji">🔒</div><div style="font-family:var(--font-mono);font-size:10px">Challenge Master</div></div>
+            <div class="card shop-card" style="cursor:pointer;opacity:0.3;filter:grayscale(1)" onclick="lockedBadgeToast('Reach Rank #1 overall.')"><div class="emoji">🔒</div><div style="font-family:var(--font-mono);font-size:10px">Apex Guardian</div></div>
+        </div>
+    </div>

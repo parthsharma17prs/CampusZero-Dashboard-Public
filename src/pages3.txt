@@ -1,0 +1,135 @@
+    <!-- PAGE 3: CHALLENGES -->
+    <div id="page-challenges" class="page">
+        <div class="tabs" style="border:none; margin-bottom:0">
+            <div class="tab active" style="margin-right:8px; border-bottom:2px solid var(--accent); color:var(--accent)">All</div>
+            <div class="tab" style="margin-right:8px">Daily</div>
+            <div class="tab" style="margin-right:8px">Weekly</div>
+            <div class="tab" style="margin-right:8px">Campus-Wide</div>
+            <div class="tab">Monthly</div>
+        </div>
+
+        <div class="grid-3">
+            <div class="chal-card">
+                <div class="chal-top"><div class="chal-title text-coral">DARK HOUR FRIDAY</div><div class="chal-reward">200🪙</div></div>
+                <div class="chal-desc">Power down non-essentials for 1hr.</div>
+                <div class="chal-prog-wrap">
+                    <div class="chal-prog-bg"><div class="chal-prog-fill" style="width:60%; background:var(--coral)"></div></div>
+                    <div class="chal-prog-info"><span>60%</span><span>Fri 5PM</span></div>
+                </div>
+                <div class="chal-bot"><div class="chal-timer">⏰ 4 days left</div><button class="btn btn-primary" onclick="join(this, 200)">JOIN</button></div>
+            </div>
+            
+            <div class="chal-card">
+                <div class="chal-top"><div class="chal-title text-acid">AI SCANNER PRO</div><div class="chal-reward">150🪙</div></div>
+                <div class="chal-desc">Submit 5 verified waste scans using AI.</div>
+                <div class="chal-prog-wrap">
+                    <div class="chal-prog-bg"><div class="chal-prog-fill" style="width:60%"></div></div>
+                    <div class="chal-prog-info"><span>3/5 completed</span><span>Weekly</span></div>
+                </div>
+                <div class="chal-bot"><div class="chal-timer">⏰ 4 days left</div><button class="btn btn-primary" onclick="join(this, 150)">JOIN</button></div>
+            </div>
+
+            <div class="chal-card">
+                <div class="chal-top"><div class="chal-title text-cyan">STREAK KEEPER</div><div class="chal-reward">100🪙</div></div>
+                <div class="chal-desc">Login 7 days straight to earn bonus.</div>
+                <div class="chal-prog-wrap">
+                    <div class="chal-prog-bg"><div class="chal-prog-fill" style="width:71%; background:var(--cyan)"></div></div>
+                    <div class="chal-prog-info"><span>5/7 completed</span><span>Daily</span></div>
+                </div>
+                <div class="chal-bot"><div class="chal-timer">⏰ 5hrs left</div><button class="btn btn-primary" onclick="join(this, 100)">JOIN</button></div>
+            </div>
+
+            <div class="chal-card">
+                <div class="chal-top"><div class="chal-title text-violet" style="color:var(--violet)">LAB WATCHDOG</div><div class="chal-reward">250🪙</div></div>
+                <div class="chal-desc">Report 3 lab waste incidents manually or via Scanner.</div>
+                <div class="chal-prog-wrap">
+                    <div class="chal-prog-bg"><div class="chal-prog-fill" style="width:33%; background:var(--violet)"></div></div>
+                    <div class="chal-prog-info"><span>1/3 completed</span><span>Weekly</span></div>
+                </div>
+                <div class="chal-bot"><div class="chal-timer">⏰ 4 days left</div><button class="btn btn-primary" onclick="join(this, 250)">JOIN</button></div>
+            </div>
+
+            <div class="chal-card">
+                <div class="chal-top"><div class="chal-title text-yellow">SOLAR PEAK CHASER</div><div class="chal-reward">120🪙</div></div>
+                <div class="chal-desc">Open app during 5 solar peak periods.</div>
+                <div class="chal-prog-wrap">
+                    <div class="chal-prog-bg"><div class="chal-prog-fill" style="width:40%; background:var(--yellow)"></div></div>
+                    <div class="chal-prog-info"><span>2/5 completed</span><span>Daily</span></div>
+                </div>
+                <div class="chal-bot"><div class="chal-timer">⏰ Today</div><button class="btn btn-primary" onclick="join(this, 120)">JOIN</button></div>
+            </div>
+
+            <div class="chal-card">
+                <div class="chal-top"><div class="chal-title text-coral">DEPT ENERGY BATTLE</div><div class="chal-reward">300🪙</div></div>
+                <div class="chal-desc">Help MPSTME reach 500kWh savings before month-end.</div>
+                <div class="chal-prog-wrap">
+                    <div class="chal-prog-bg"><div class="chal-prog-fill" style="width:68%; background:var(--coral)"></div></div>
+                    <div class="chal-prog-info"><span>340/500 kWh</span><span>Monthly</span></div>
+                </div>
+                <div class="chal-bot"><div class="chal-timer">⏰ 19 days left</div><button class="btn btn-primary" onclick="join(this, 300)">JOIN</button></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 4: AI SCANNER -->
+    <div id="page-scanner" class="page">
+        <div class="section-title text-acid" style="font-size:24px">AI ENERGY SCANNER</div>
+        <div class="cc-grid">
+            <div class="cc-left">
+                <div class="dropzone" id="scan-dropzone" onclick="triggerScan()">
+                    <div style="font-size:48px; margin-bottom:12px">📷</div>
+                    <div style="font-family:var(--font-heading); font-size:20px; font-weight:700; margin-bottom:4px">TAP TO SCAN OR DROP IMAGE</div>
+                    <div style="font-family:var(--font-mono); font-size:12px; color:var(--fog)">AI detects energy waste · Earn 50–200 coins per scan</div>
+                </div>
+                
+                <div id="scan-result" class="card hidden" style="margin-top:10px; background:var(--bg-elevated); border:1px solid var(--accent); padding:24px; animation:slideUp 0.3s">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:16px">
+                        <div style="background:rgba(255,107,74,0.1); color:var(--coral); font-family:var(--font-mono); font-weight:700; font-size:10px; padding:4px 12px; border-radius:12px">HIGH SEVERITY</div>
+                        <div style="font-family:var(--font-heading); font-size:32px; color:var(--accent); font-weight:800; line-height:1">🪙 +150</div>
+                    </div>
+                    <div style="font-family:var(--font-heading); font-size:16px; margin-bottom:8px">Waste Detected: Unoccupied AC & Lights</div>
+                    <div style="font-style:italic; font-family:var(--font-body); font-size:13px; color:var(--fog); margin-bottom:20px">"I see 3 lights and a 2-ton Split AC left running in an empty classroom. Good catch, Priya!"</div>
+                    
+                    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:24px; text-align:center">
+                        <div style="background:var(--bg-panels); border:1px solid var(--border); padding:12px; border-radius:8px">
+                            <div style="font-family:var(--font-mono); font-size:10px; color:var(--fog); margin-bottom:4px">RATE</div>
+                            <div style="font-family:var(--font-heading); font-size:18px; color:white">2.4<span style="font-size:10px">kWh/h</span></div>
+                        </div>
+                        <div style="background:var(--bg-panels); border:1px solid var(--border); padding:12px; border-radius:8px">
+                            <div style="font-family:var(--font-mono); font-size:10px; color:var(--fog); margin-bottom:4px">COST</div>
+                            <div style="font-family:var(--font-heading); font-size:18px; color:var(--coral)">₹58<span style="font-size:10px">/day</span></div>
+                        </div>
+                        <div style="background:var(--bg-panels); border:1px solid var(--border); padding:12px; border-radius:8px">
+                            <div style="font-family:var(--font-mono); font-size:10px; color:var(--fog); margin-bottom:4px">CARBON</div>
+                            <div style="font-family:var(--font-heading); font-size:18px; color:var(--cyan)">1.8<span style="font-size:10px">kg/d</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title text-fog" style="font-size:12px; margin-top:20px">QUICK REPORTS</div>
+                <div class="grid-2">
+                    <button class="btn btn-outline flex items-center justify-between" style="padding:16px" onclick="quickReport('Lights On')"><div>💡 Lights On</div><div class="text-acid" style="font-family:var(--font-mono)">+50🪙</div></button>
+                    <button class="btn btn-outline flex items-center justify-between" style="padding:16px" onclick="quickReport('AC Empty')"><div>❄️ AC Empty</div><div class="text-acid" style="font-family:var(--font-mono)">+50🪙</div></button>
+                    <button class="btn btn-outline flex items-center justify-between" style="padding:16px" onclick="quickReport('Screen On')"><div>🖥️ Screen On</div><div class="text-acid" style="font-family:var(--font-mono)">+50🪙</div></button>
+                    <button class="btn btn-outline flex items-center justify-between" style="padding:16px" onclick="quickReport('Tap Running')"><div>🚰 Tap Running</div><div class="text-acid" style="font-family:var(--font-mono)">+50🪙</div></button>
+                </div>
+            </div>
+            
+            <div class="cc-right">
+                <div class="card" style="margin-bottom:20px">
+                    <div class="section-title text-cyan" style="margin-bottom:16px">SCAN HISTORY</div>
+                    <div class="data-row"><div class="dr-icon">❄️</div><div class="dr-main"><div class="dr-title">AC left running</div><div class="dr-sub">Chemistry Lab</div></div><div class="dr-right"><div class="dr-stat acid">+150🪙</div><div class="dr-sub">Today</div></div></div>
+                    <div class="data-row"><div class="dr-icon">🖥️</div><div class="dr-main"><div class="dr-title">2 Screens On</div><div class="dr-sub">Library 3rd Fl</div></div><div class="dr-right"><div class="dr-stat acid">+50🪙</div><div class="dr-sub">Yesterday</div></div></div>
+                    <div class="data-row"><div class="dr-icon">💡</div><div class="dr-main"><div class="dr-title">Empty class lights</div><div class="dr-sub">MPSTME 402</div></div><div class="dr-right"><div class="dr-stat acid">+100🪙</div><div class="dr-sub">2 days ago</div></div></div>
+                    <div class="data-row"><div class="dr-icon">🚰</div><div class="dr-main"><div class="dr-title">Leaking Tap</div><div class="dr-sub">Hostel Washroom</div></div><div class="dr-right"><div class="dr-stat acid">+200🪙</div><div class="dr-sub">3 days ago</div></div></div>
+                </div>
+                
+                <div class="card grid-2" style="background:var(--accent-dim); border-color:var(--accent)">
+                    <div><div class="dr-sub" style="margin-bottom:4px">Total Scans</div><div style="font-family:var(--font-heading);font-size:32px;color:var(--accent)">23</div></div>
+                    <div><div class="dr-sub" style="margin-bottom:4px">Total Coins</div><div style="font-family:var(--font-heading);font-size:32px;color:white">1,490</div></div>
+                    <div><div class="dr-sub" style="margin-bottom:4px">Validated</div><div style="font-family:var(--font-heading);font-size:32px;color:var(--cyan)">18</div></div>
+                    <div><div class="dr-sub" style="margin-bottom:4px">CO₂ Saved</div><div style="font-family:var(--font-heading);font-size:32px;color:var(--yellow)">31kg</div></div>
+                </div>
+            </div>
+        </div>
+    </div>

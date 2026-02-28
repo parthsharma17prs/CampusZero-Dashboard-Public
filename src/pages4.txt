@@ -1,0 +1,145 @@
+    <!-- PAGE 5: CALL CENTER -->
+    <div id="page-callcenter" class="page">
+        <div class="active-call-banner" id="active-call-banner">
+            <div class="ac-left">
+                <div class="ac-badge"><div class="dot"></div> LIVE CALL</div>
+                <div class="ac-caller" id="ac-caller">CampusZero AI</div>
+                <div class="ac-reason" id="ac-reason">⚡ Lab 204 Energy Spike</div>
+            </div>
+            <div class="ac-center">
+                <div class="ac-timer" id="ac-timer">00:00</div>
+                <div class="waveform" id="waveform">
+                    <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+                    <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+                    <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+                    <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+                </div>
+            </div>
+            <div class="ac-controls">
+                <button class="ctrl-btn mute" onclick="toggleMute(this)" id="btn-mute">🎤</button>
+                <button class="ctrl-btn speaker" onclick="this.classList.toggle('active')">🔊</button>
+                <button class="ctrl-btn hold" onclick="toggleHold(this)" id="btn-hold">⏸️</button>
+                <button class="ctrl-btn keypad">⌨️</button>
+                <button class="ctrl-btn end" onclick="endCall()">📵</button>
+            </div>
+        </div>
+
+        <div class="cc-grid">
+            <div class="cc-left">
+                <div class="tabs" style="border-bottom:1px solid var(--border)">
+                    <div class="tab active" onclick="switchCcTab('inbound', this)">INBOUND</div>
+                    <div class="tab" onclick="switchCcTab('outbound', this)">OUTBOUND</div>
+                    <div class="tab" onclick="switchCcTab('log', this)">CALL LOG</div>
+                    <div class="tab" onclick="switchCcTab('agent', this)">AI AGENT <span class="nav-badge text-acid" style="margin-left:8px; border:1px solid var(--accent)">PRO</span></div>
+                </div>
+
+                <!-- Tab: Inbound -->
+                <div id="cc-inbound" class="tab-content active">
+                    <div class="live-status" style="margin-bottom:16px"><div class="dot" style="background:#00d4ff"></div> Ready to receive calls</div>
+                    
+                    <div id="inc-call-widget" class="inc-widget">
+                        <div class="inc-ava">🤖<div class="inc-ring"></div><div class="inc-ring"></div></div>
+                        <div class="inc-name" id="inc-name-disp">CampusZero AI</div>
+                        <div class="inc-reason" id="inc-reason-disp">⚡ Lab 204 Energy Spike</div>
+                        <div class="inc-actions">
+                            <button class="inc-btn acc" onclick="acceptCall()">✅</button>
+                            <button class="inc-btn dec" onclick="declineCall()">❌</button>
+                        </div>
+                    </div>
+
+                    <div class="section-title text-fog" style="font-size:12px; margin-top:20px; font-family:var(--font-mono)">SIMULATE INCOMING CALL</div>
+                    <div style="display:flex; gap:12px;">
+                        <button class="btn btn-outline" style="flex:1" onclick="showIncoming('CampusZero AI', '⚡ Lab 204 Energy Spike')">📞 AI: Waste Alert</button>
+                        <button class="btn btn-outline" style="flex:1" onclick="showIncoming('Rajesh Kumar', '🔧 Maintenance Request')">📞 Facilities Team</button>
+                        <button class="btn btn-outline" style="flex:1" onclick="showIncoming('Dr. Mehta HOD', '📊 Weekly Energy Debrief')">📞 HOD Report</button>
+                    </div>
+
+                    <div class="section-title text-fog" style="font-size:12px; margin-top:32px; font-family:var(--font-mono); display:flex; justify-content:space-between"><span>MISSED (2)</span><span class="text-coral" style="cursor:pointer">Clear</span></div>
+                    <div class="card" style="padding:12px">
+                        <div class="data-row"><div class="dr-icon">❌</div><div class="dr-main"><div class="dr-title">CampusZero AI</div><div class="dr-sub">Lab 204 Alert</div></div><div class="dr-right"><div class="dr-sub">10:42 AM</div><a href="#" class="text-acid" style="font-family:var(--font-mono);font-size:10px;text-decoration:none">📞 Call Back</a></div></div>
+                        <div class="data-row" style="border:none"><div class="dr-icon">❌</div><div class="dr-main"><div class="dr-title">Dr. Mehta HOD</div><div class="dr-sub">Weekly Report</div></div><div class="dr-right"><div class="dr-sub">Yesterday</div><a href="#" class="text-acid" style="font-family:var(--font-mono);font-size:10px;text-decoration:none">📞 Call Back</a></div></div>
+                    </div>
+                </div>
+
+                <!-- Tab: Outbound -->
+                <div id="cc-outbound" class="tab-content">
+                    <div class="dialpad-wrap">
+                        <div class="dial-display"><span id="dial-number" style="opacity:0.5">_</span><button onclick="backspace()" style="background:transparent;border:none;color:var(--fog);font-size:24px;float:right;cursor:pointer">⌫</button></div>
+                        <div class="dial-grid">
+                            <div class="dial-key" onclick="dial(1)"><div class="dial-num">1</div><div class="dial-alpha">&nbsp;</div></div>
+                            <div class="dial-key" onclick="dial(2)"><div class="dial-num">2</div><div class="dial-alpha">ABC</div></div>
+                            <div class="dial-key" onclick="dial(3)"><div class="dial-num">3</div><div class="dial-alpha">DEF</div></div>
+                            <div class="dial-key" onclick="dial(4)"><div class="dial-num">4</div><div class="dial-alpha">GHI</div></div>
+                            <div class="dial-key" onclick="dial(5)"><div class="dial-num">5</div><div class="dial-alpha">JKL</div></div>
+                            <div class="dial-key" onclick="dial(6)"><div class="dial-num">6</div><div class="dial-alpha">MNO</div></div>
+                            <div class="dial-key" onclick="dial(7)"><div class="dial-num">7</div><div class="dial-alpha">PQRS</div></div>
+                            <div class="dial-key" onclick="dial(8)"><div class="dial-num">8</div><div class="dial-alpha">TUV</div></div>
+                            <div class="dial-key" onclick="dial(9)"><div class="dial-num">9</div><div class="dial-alpha">WXYZ</div></div>
+                            <div class="dial-key" onclick="dial('*')"><div class="dial-num">*</div><div class="dial-alpha">&nbsp;</div></div>
+                            <div class="dial-key" onclick="dial(0)"><div class="dial-num">0</div><div class="dial-alpha">+</div></div>
+                            <div class="dial-key" onclick="dial('#')"><div class="dial-num">#</div><div class="dial-alpha">&nbsp;</div></div>
+                        </div>
+                        <button class="btn btn-primary dial-call" style="padding:16px; font-size:14px" onclick="startOutbound()">📞 CALL</button>
+                    </div>
+
+                    <div class="section-title text-fog" style="font-size:12px; margin-top:20px; font-family:var(--font-mono)">QUICK DIAL</div>
+                    <div class="grid-2">
+                        <div class="data-row card" style="padding:12px"><div class="lb-ava" style="background:var(--accent);width:32px;height:32px">🤖</div><div class="dr-main"><div class="dr-title">CampusZero AI</div><div class="dr-sub">Automated System</div></div><button class="btn btn-outline" style="padding:4px 8px" onclick="showActiveCall('CampusZero AI', 'Automated System')">📞</button></div>
+                        <div class="data-row card" style="padding:12px"><div class="lb-ava" style="background:var(--coral);width:32px;height:32px">🔧</div><div class="dr-main"><div class="dr-title">Facilities Team</div><div class="dr-sub">Rajesh Kumar</div></div><button class="btn btn-outline" style="padding:4px 8px" onclick="showActiveCall('Facilities Team', 'Maintenance Request')">📞</button></div>
+                        <div class="data-row card" style="padding:12px"><div class="lb-ava" style="background:var(--violet);width:32px;height:32px">👨‍🏫</div><div class="dr-main"><div class="dr-title">Dr. Mehta HOD</div><div class="dr-sub">MPSTME Dean</div></div><button class="btn btn-outline" style="padding:4px 8px" onclick="showActiveCall('Dr. Mehta HOD', 'Direct Line')">📞</button></div>
+                        <div class="data-row card" style="padding:12px"><div class="lb-ava" style="background:var(--yellow);width:32px;height:32px">🧪</div><div class="dr-main"><div class="dr-title">Lab Coordinator</div><div class="dr-sub">Chemistry / Physics</div></div><button class="btn btn-outline" style="padding:4px 8px" onclick="showActiveCall('Lab Coordinator', 'Direct Line')">📞</button></div>
+                    </div>
+                </div>
+
+                <!-- Tab: Call Log -->
+                <div id="cc-log" class="tab-content card" style="padding:0">
+                    <div class="data-row"><div class="dr-icon text-acid">📥</div><div class="dr-main"><div class="dr-title">CampusZero AI</div><div class="dr-sub">Lab 204 Alert · 1:23</div></div><div class="dr-right"><div class="dr-stat acid">+75🪙</div><div class="dr-sub">Today 10:42</div></div></div>
+                    <div class="data-row"><div class="dr-icon text-cyan">📤</div><div class="dr-main"><div class="dr-title">Facilities Team</div><div class="dr-sub">Reported AC fault · 2:47</div></div><div class="dr-right"><div class="dr-stat">--</div><div class="dr-sub">Yesterday</div></div></div>
+                    <div class="data-row"><div class="dr-icon text-coral">❌</div><div class="dr-main"><div class="dr-title">Dr. Mehta HOD</div><div class="dr-sub">Dept report · --</div></div><div class="dr-right"><div class="dr-stat">--</div><div class="dr-sub">Yesterday</div></div></div>
+                    <div class="data-row"><div class="dr-icon text-acid">📥</div><div class="dr-main"><div class="dr-title">CampusZero AI</div><div class="dr-sub">Solar Peak Alert · 0:48</div></div><div class="dr-right"><div class="dr-stat acid">+50🪙</div><div class="dr-sub">2 days ago</div></div></div>
+                    <div class="data-row" style="border:none"><div class="dr-icon text-cyan">📤</div><div class="dr-main"><div class="dr-title">Lab Coordinator</div><div class="dr-sub">Empty lab lights · 1:12</div></div><div class="dr-right"><div class="dr-stat acid">+100🪙</div><div class="dr-sub">3 days ago</div></div></div>
+                </div>
+
+                <!-- Tab: Agent -->
+                <div id="cc-agent" class="tab-content">
+                    <div class="card" style="border-left:4px solid var(--accent); display:flex; justify-content:space-between; align-items:center">
+                        <div>
+                            <div style="font-family:var(--font-heading); font-size:16px; font-weight:700">🤖 CAMPUSZERO VOICE AGENT</div>
+                            <div style="font-family:var(--font-mono); font-size:11px; color:var(--fog)">Powered by Vapi.ai + ElevenLabs</div>
+                        </div>
+                        <div class="live-status"><div class="dot"></div> READY</div>
+                    </div>
+
+                    <div style="background:rgba(0,0,0,0.5); border:1px solid var(--border); border-radius:8px; padding:16px; font-family:var(--font-mono); font-size:12px; color:var(--accent); min-height:140px; line-height:1.5" id="agent-script">
+                        Select a scenario below to preview the Voice Agent script...
+                    </div>
+
+                    <button class="btn btn-outline" style="justify-content:flex-start" onclick="setScript('waste')">⚠️ Waste Alert Call</button>
+                    <button class="btn btn-outline" style="justify-content:flex-start" onclick="setScript('report')">📊 Weekly HOD Report</button>
+                    <button class="btn btn-outline" style="justify-content:flex-start" onclick="setScript('solar')">☀️ Solar Peak Notification</button>
+                    <button class="btn btn-outline" style="justify-content:flex-start" onclick="setScript('streak')">🔥 Streak Reminder</button>
+
+                    <button class="btn btn-primary" style="margin-top:10px; padding:16px" onclick="deployAgent()">🚀 DEPLOY CALL</button>
+                </div>
+            </div>
+
+            <div class="cc-right">
+                <div class="card grid-2" style="background:var(--bg-elevated); margin-bottom:20px">
+                    <div><div class="dr-sub" style="margin-bottom:4px">Calls This Week</div><div style="font-family:var(--font-heading);font-size:24px;color:var(--accent)">12</div></div>
+                    <div><div class="dr-sub" style="margin-bottom:4px">Avg Duration</div><div style="font-family:var(--font-heading);font-size:24px;color:var(--cyan)">3:24</div></div>
+                    <div><div class="dr-sub" style="margin-bottom:4px">Waste Reported</div><div style="font-family:var(--font-heading);font-size:24px;color:var(--coral)">8</div></div>
+                    <div><div class="dr-sub" style="margin-bottom:4px">Calls Missed</div><div style="font-family:var(--font-heading);font-size:24px;color:var(--yellow)">2</div></div>
+                </div>
+
+                <div class="card">
+                    <div class="section-title text-cyan" style="margin-bottom:16px">AI AGENT STATUS</div>
+                    <div class="data-row"><div class="dot" style="background:var(--accent);animation:none"></div><div class="dr-main"><div class="dr-title" style="font-family:var(--font-mono);font-size:11px">EnergyMonitorAgent</div><div class="dr-sub">Watching 24 buildings</div></div></div>
+                    <div class="data-row"><div class="dot coral"></div><div class="dr-main"><div class="dr-title" style="font-family:var(--font-mono);font-size:11px">AnomalyDetectionAgent</div><div class="dr-sub text-coral">Lab 204 alert active</div></div></div>
+                    <div class="data-row"><div class="dot" style="background:var(--yellow);animation:none"></div><div class="dr-main"><div class="dr-title" style="font-family:var(--font-mono);font-size:11px">PredictionAgent</div><div class="dr-sub">72h forecast running</div></div></div>
+                    <div class="data-row"><div class="dot" style="background:var(--accent);animation:none"></div><div class="dr-main"><div class="dr-title" style="font-family:var(--font-mono);font-size:11px">RedirectAgent</div><div class="dr-sub">EV Bay 3 routing</div></div></div>
+                    <div class="data-row"><div class="dot" style="background:var(--cyan);animation:none"></div><div class="dr-main"><div class="dr-title" style="font-family:var(--font-mono);font-size:11px">CarbonAccountingAgent</div><div class="dr-sub">Logging 142kg saved</div></div></div>
+                    <div class="data-row" style="border:none"><div class="dot"></div><div class="dr-main"><div class="dr-title text-acid" style="font-family:var(--font-mono);font-size:11px">VoiceCallAgent</div><div class="dr-sub">Ready to deploy</div></div></div>
+                </div>
+            </div>
+        </div>
+    </div>

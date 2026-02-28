@@ -1,0 +1,132 @@
+// Global State
+let userCoins = 4820;
+
+// Cursor
+const cursor = document.getElementById('custom-cursor');
+const cursorRing = document.getElementById('custom-cursor-ring');
+let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+let ringX = mouseX, ringY = mouseY;
+
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    cursor.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+});
+
+function loop() {
+    ringX += (mouseX - ringX) * 0.15;
+    ringY += (mouseY - ringY) * 0.15;
+    cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+    requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+
+document.querySelectorAll('a, button, .nav-item, input, .card.shop-card, .greencoin-badge, .cursor-pointer').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursorRing.style.width = '48px'; cursorRing.style.height = '48px'; cursor.style.opacity = '0.5'; });
+    el.addEventListener('mouseleave', () => { cursorRing.style.width = '32px'; cursorRing.style.height = '32px'; cursor.style.opacity = '1'; });
+});
+
+// Navigation
+function navTo(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    
+    document.getElementById(`page-${pageId}`).classList.add('active');
+    let navItem = document.querySelector(`.nav-item[data-target="${pageId}"]`);
+    if(navItem) navItem.classList.add('active');
+
+    // Trigger specific animations
+    if(pageId === 'wallet') animateCoins('wallet-balance', 0, userCoins);
+    if(pageId === 'callcenter') {
+        setTimeout(() => { if(!callActive) document.getElementById('inc-call-widget').style.display='flex'; }, 3000);
+    }
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); document.getElementById('searchInput').focus(); }
+    if (e.key === 'Escape') {
+        document.getElementById('searchInput').blur();
+        document.getElementById('solar-spin-modal').style.display = 'none';
+        document.getElementById('notif-dropdown').style.display = 'none';
+        document.getElementById('profile-dropdown').style.display = 'none';
+    }
+});
+
+// Notifications
+const notifs = [
+    {icon:'🔥', title:'Streak at Risk!', desc:'Log a green action in 6 hours.', time:'2hrs ago', unread:true},
+    {icon:'🏆', title:'You entered Top 3!', desc:'Ranked #3 on campus.', time:'4hrs ago', unread:true},
+    {icon:'📞', title:'Missed Call', desc:'CampusZero AI called.', time:'Today 10:42', unread:true},
+    {icon:'💡', title:'Waste Near You', desc:'Report Classroom B-204.', time:'Yesterday', unread:false},
+    {icon:'☀️', title:'Solar Peak Alert', desc:'Peak generation in 30 mins.', time:'Yesterday', unread:false}
+];
+
+function renderNotifs() {
+    let html = '';
+    notifs.forEach(n => {
+        html += `<div class="notif-item ${n.unread?'unread':''}">
+            <div class="notif-icon">${n.icon}</div>
+            <div class="notif-content">
+                <h4>${n.title} <div class="dot text-coral"></div></h4>
+                <p>${n.desc}</p>
+                <div class="notif-time">${n.time}</div>
+            </div>
+        </div>`;
+    });
+    document.getElementById('notif-list').innerHTML = html;
+}
+renderNotifs();
+
+function toggleNotif(e) { e.stopPropagation(); document.getElementById('notif-dropdown').style.display = document.getElementById('notif-dropdown').style.display==='flex' ? 'none' : 'flex'; }
+function toggleProfileMenu(e) { if(e) e.stopPropagation(); document.getElementById('profile-dropdown').style.display = document.getElementById('profile-dropdown').style.display==='flex' ? 'none' : 'flex'; }
+document.addEventListener('click', () => { document.getElementById('notif-dropdown').style.display='none'; document.getElementById('profile-dropdown').style.display='none'; });
+document.getElementById('notif-dropdown').addEventListener('click', e => e.stopPropagation());
+
+function markAllRead(e) {
+    e.stopPropagation();
+    notifs.forEach(n => n.unread=false); renderNotifs();
+    document.getElementById('bell-count').style.display = 'none';
+}
+
+// Toasts
+function showToast(color, icon, title, desc, coins=0) {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = `toast ${color}`;
+    toast.innerHTML = `<div style="font-size:24px">${icon}</div><div style="flex-grow:1"><div style="font-family:var(--font-heading);font-size:14px;font-weight:600">${title}</div><div style="font-family:var(--font-mono);font-size:11px;color:var(--fog)">${desc}</div></div>`;
+    if(coins>0) toast.innerHTML += `<div style="font-family:var(--font-heading);font-size:16px;color:var(--accent);font-weight:700">+🪙 ${coins}</div>`;
+    container.appendChild(toast);
+    setTimeout(() => { if(toast.parentElement) toast.remove(); }, 4000);
+}
+
+// Confetti
+function burstConfetti() {
+    const colors = ['#c8ff00','#ff6b4a','#00d4ff','#a78bfa','#ffd000'];
+    for(let i=0; i<50; i++) {
+        const conf = document.createElement('div');
+        conf.className = 'confetti';
+        conf.style.left = Math.random() * 100 + 'vw';
+        conf.style.top = -20 + 'px';
+        conf.style.background = colors[Math.floor(Math.random()*colors.length)];
+        conf.style.width = Math.random()*6+6 + 'px';
+        conf.style.height = conf.style.width;
+        conf.style.animationDuration = Math.random()*1.5 + 1.5 + 's';
+        document.body.appendChild(conf);
+        setTimeout(() => conf.remove(), 3000);
+    }
+}
+
+// Coin Animation logic
+function animateCoins(id, start, end) {
+    const obj = document.getElementById(id); if(!obj) return;
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / 1000, 1);
+        obj.innerHTML = Math.floor(progress * (end - start) + start);
+        if (progress < 1) window.requestAnimationFrame(step);
+    };
+    window.requestAnimationFrame(step);
+}
+// Init topbar coin
+animateCoins('coin-balance-top', 0, userCoins);

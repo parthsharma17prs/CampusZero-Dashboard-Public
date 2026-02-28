@@ -1,0 +1,166 @@
+// Canvas Energy Map
+const mapC = document.getElementById('energyMapCanvas');
+const ctx = mapC.getContext('2d');
+let w, h;
+function resizeMap() { w = mapC.width = mapC.parentElement.clientWidth; h = mapC.height = 260; }
+window.addEventListener('resize', resizeMap); resizeMap();
+
+const bldgs = [
+    {x:40, y:80, w:60, h:100, label:'MPSTME Block A', flow:'42.3 kWh', status:'acid'},
+    {x:180, y:40, w:50, h:60, label:'Chemistry Lab', flow:'89.1 kWh', status:'coral'},
+    {x:360, y:90, w:80, h:50, label:'Library', flow:'31.7 kWh', status:'acid'},
+    {x:60, y:200, w:70, h:40, label:'Hostel D', flow:'58.4 kWh', status:'yellow'},
+    {x:240, y:120, w:60, h:60, label:'Solar Array', flow:'+124 kWh', status:'cyan'},
+    {x:400, y:180, w:50, h:40, label:'Admin Block', flow:'28.9 kWh', status:'acid'}
+];
+let tick = 0;
+function drawMap() {
+    ctx.clearRect(0,0,w,h); tick++;
+    ctx.strokeStyle = 'rgba(200,255,0,0.02)'; ctx.lineWidth = 1;
+    for(let i=0; i<w; i+=40) { ctx.beginPath(); ctx.moveTo(i,0); ctx.lineTo(i,h); ctx.stroke(); }
+    for(let j=0; j<h; j+=40) { ctx.beginPath(); ctx.moveTo(0,j); ctx.lineTo(w,j); ctx.stroke(); }
+
+    ctx.strokeStyle = 'rgba(255,255,255,0.1)'; ctx.lineWidth = 2; ctx.setLineDash([10, 10]); ctx.lineDashOffset = -tick * 0.5;
+    bldgs.forEach(b => {
+        ctx.beginPath(); ctx.moveTo(b.x+b.w/2, b.y+b.h/2); ctx.lineTo(270, 150); ctx.stroke();
+    });
+    ctx.setLineDash([]);
+
+    let dotX = 270 + Math.cos(tick*0.02)*100, dotY = 150 + Math.sin(tick*0.03)*50;
+    ctx.fillStyle = '#fff'; ctx.shadowBlur = 10; ctx.shadowColor = '#fff';
+    ctx.beginPath(); ctx.arc(dotX, dotY, 4, 0, Math.PI*2); ctx.fill();
+
+    bldgs.forEach(b => {
+        ctx.shadowBlur = b.status==='acid'?20:b.status==='coral'?30:b.status==='cyan'?25:10;
+        ctx.shadowColor = `var(--${b.status})`; ctx.fillStyle = `rgba(${b.status==='coral'?'255,107,74':b.status==='cyan'?'0,212,255':b.status==='yellow'?'255,208,0':'200,255,0'}, 0.1)`;
+        ctx.strokeStyle = `var(--${b.status})`; ctx.lineWidth = 2;
+        ctx.fillRect(b.x, b.y, b.w, b.h); ctx.strokeRect(b.x, b.y, b.w, b.h);
+        ctx.shadowBlur = 0; ctx.fillStyle = '#fff'; ctx.font = 'bold 9px "JetBrains Mono"';
+        ctx.fillText(b.label, b.x, b.y-14);
+        ctx.fillStyle = `var(--${b.status})`; ctx.fillText(b.flow, b.x, b.y-4);
+        if(b.status === 'coral' && tick%60 < 30) { ctx.beginPath(); ctx.arc(b.x+b.w, b.y, 4, 0, Math.PI*2); ctx.fill(); }
+    });
+    requestAnimationFrame(drawMap);
+}
+requestAnimationFrame(drawMap);
+
+// Solar Spin Modal
+function openSolarSpin() { document.getElementById('solar-spin-modal').style.display='flex'; }
+function closeModal(id) { document.getElementById(id).style.display='none'; }
+function triggerSpin() {
+    let btn = document.getElementById('spin-btn');
+    btn.disabled = true; btn.style.opacity=0.5;
+    let emojis = ['⚡','☀️','🌱','🔋','🔌','🎁'];
+    let spinInt = setInterval(() => { document.getElementById('spin-emoji').innerText = emojis[Math.floor(Math.random()*emojis.length)]; }, 80);
+    setTimeout(() => {
+        clearInterval(spinInt);
+        document.getElementById('spin-emoji').innerText = '🎉';
+        let win = [25,50,75,100,150,200,250,300][Math.floor(Math.random()*8)];
+        let res = document.getElementById('spin-result');
+        res.innerHTML = `You won +${win} GreenCoins!`; res.style.display='block';
+        userCoins+=win; animateCoins('coin-balance-top', userCoins-win, userCoins);
+        burstConfetti(); showToast('acid', '☀️', 'Solar Spin Winner', `Bonus ${win} coins added.`, win);
+    }, 2200);
+}
+
+// Challenges
+function join(btn, reward) {
+    btn.innerHTML = 'JOINED'; btn.classList.replace('btn-primary', 'btn-outline'); btn.disabled=true;
+    burstConfetti(); showToast('acid', '✅', 'Challenge Joined', `Start completing tasks.`, reward);
+}
+
+// Call Center Live Data
+let callActive=false, callSeconds=0, callInterval, waveInt;
+function toggleCC(show, caller='', reason='') {
+    document.getElementById('active-call-banner').style.display = show ? 'flex' : 'none';
+    if(show) { document.getElementById('ac-caller').innerText=caller; document.getElementById('ac-reason').innerText=reason; }
+    callActive = show;
+}
+
+function acceptCall() { document.getElementById('inc-call-widget').style.display='none'; toggleCC(true, 'CampusZero AI', '⚡ Lab 204 Energy Spike'); startTimer(); startWaveform(); }
+function declineCall() { document.getElementById('inc-call-widget').style.display='none'; showToast('coral', '📞', 'Call declined', 'Missed: CampusZero AI'); }
+function showIncoming(caller, reason) { document.getElementById('inc-name-disp').innerText=caller; document.getElementById('inc-reason-disp').innerText=reason; document.getElementById('inc-call-widget').style.display='flex'; }
+
+function backspace() { let d=document.getElementById('dial-number'); if(d.innerText!=='_') d.innerText=d.innerText.slice(0,-1) || '_'; }
+function dial(num) { let d=document.getElementById('dial-number'); if(d.innerText==='_') d.innerText=num; else d.innerText+=num; }
+function startOutbound() { let num=document.getElementById('dial-number').innerText; if(num==='_') return; toggleCC(true, num, 'Outbound Call'); startTimer(); startWaveform(); }
+function showActiveCall(name, reason) { toggleCC(true, name, reason); startTimer(); startWaveform(); }
+
+function startTimer() { callSeconds=0; clearInterval(callInterval); document.getElementById('ac-timer').innerText='00:00'; callInterval=setInterval(()=>{ callSeconds++; let m=Math.floor(callSeconds/60).toString().padStart(2,'0'), s=(callSeconds%60).toString().padStart(2,'0'); document.getElementById('ac-timer').innerText=`${m}:${s}`; },1000); }
+function startWaveform() { clearInterval(waveInt); let bars=document.querySelectorAll('.wave-bar'); waveInt=setInterval(()=>{ bars.forEach(b => b.style.height= (Math.random()*28+4)+'px'); },150); }
+function toggleMute(btn) { btn.classList.toggle('active'); if(btn.classList.contains('active')){ clearInterval(waveInt); document.querySelectorAll('.wave-bar').forEach(b=>b.style.height='4px'); } else startWaveform(); }
+function toggleHold(btn) { btn.classList.toggle('active'); if(btn.classList.contains('active')) clearInterval(callInterval); else callInterval=setInterval(()=>{ callSeconds++; let m=Math.floor(callSeconds/60).toString().padStart(2,'0'), s=(callSeconds%60).toString().padStart(2,'0'); document.getElementById('ac-timer').innerText=`${m}:${s}`; },1000); }
+function endCall() { clearInterval(callInterval); clearInterval(waveInt); toggleCC(false); let m=Math.floor(callSeconds/60).toString().padStart(2,'0'), s=(callSeconds%60).toString().padStart(2,'0'); showToast('acid', '📞', 'Call ended', `Duration ${m}:${s}`, 50); userCoins+=50; animateCoins('coin-balance-top', userCoins-50, userCoins); document.getElementById('dial-number').innerText='_'; }
+
+function setScript(type) {
+    const scripts={
+        waste:"Hi, this is CampusZero AI calling from NMIMS Energy Management. I've detected unusual energy activity in Chemistry Lab 204 — lights and AC running for 95 minutes with zero occupancy detected. Estimated daily cost: ₹327. Press 1 to acknowledge, press 2 to schedule shutdown, press 3 to alert the facilities team immediately. Thank you — have a green day!",
+        report:"Good morning! CampusZero AI here with your weekly energy report for MPSTME. Your department scored 74 out of 100 this week — up 8 points from last week. You're ranked 3rd of 6 departments campus-wide. Biggest win: Lab 102 cut overnight consumption by 40%. Would you like the full PDF report emailed to you now?",
+        solar:"Hello! Quick solar alert from CampusZero AI. NMIMS rooftop panels will hit peak generation between 11 AM and 2 PM today — producing 24% more than current campus demand. I recommend shifting EV charging and server backups to this window. Shall I send an optimized load schedule to your facilities team?",
+        streak:"Hey Priya! CampusZero AI here. Your 12-day green streak is active — fantastic work! Just a heads-up: you haven't logged a green action yet today. Your department is ranked number 2 on the campus leaderboard right now. One quick scan could push MPSTME to number 1 and earn you 200 bonus coins. See you on the leaderboard!"
+    };
+    document.getElementById('agent-script').innerText=scripts[type];
+}
+function deployAgent() { showActiveCall('CampusZero Voice Agent', 'Automated Outbound'); }
+function switchCcTab(id, el) { 
+    document.querySelectorAll('.tab-content').forEach(tc=>tc.classList.remove('active'));
+    document.querySelectorAll('#page-callcenter .tab').forEach(t=>t.classList.remove('active'));
+    document.getElementById('cc-'+id).classList.add('active'); el.classList.add('active');
+}
+
+// Scanner
+function triggerScan() {
+    let inp=document.createElement('input'); inp.type='file'; inp.accept='image/*';
+    inp.onchange=(e)=>{
+        document.getElementById('scan-dropzone').style.height='120px';
+        document.getElementById('scan-result').classList.remove('hidden');
+        burstConfetti(); userCoins+=150; animateCoins('coin-balance-top', userCoins-150, userCoins);
+    };
+    inp.click();
+}
+function quickReport(t) { showToast('acid','✅','Quick Report Sent!',t,50); userCoins+=50; animateCoins('coin-balance-top', userCoins-50, userCoins); }
+
+// Generic utils
+function redeem(t, v) { userCoins-=v; animateCoins('coin-balance-top', userCoins+v, userCoins); showToast('coral','🛍️','Redeemed',t); burstConfetti(); }
+function rsvp(b) { b.innerText="JOINED"; b.disabled=true; showToast('acid','🎫','RSVP Confirmed!',"Event added to calendar",50); userCoins+=50; animateCoins('coin-balance-top', userCoins-50, userCoins); }
+function downloadGreenGpa() { showToast('cyan','⬇️','Downloading PDF','Green GPA: 3.8 / 4.0 generating...'); }
+function badgeToast(n, d) { showToast('acid','🎖️',n,d); }
+function lockedBadgeToast(d) { showToast('yellow','🔒','Badge Locked',d); }
+
+// Live Updates
+setInterval(()=>{ 
+    if(Math.random()>0.7){ userCoins+=10; animateCoins('coin-balance-top', userCoins-10, userCoins); document.querySelector('.greencoin-badge').style.borderColor='#fff'; setTimeout(()=>document.querySelector('.greencoin-badge').style.borderColor='',200); }
+    let tips=["Turn off monitors when leaving.", "Use stairs, skip the elevator.", "Report leaky taps via app.", "Hostel ACs auto-off at 8AM."];
+    if(Math.random()>0.8){ showToast('cyan','🤖','CampusZero Tip',tips[Math.floor(Math.random()*tips.length)]); }
+}, 10000);
+
+setInterval(()=>{
+    document.getElementById('ls-solar').innerText=Math.floor(110+Math.random()*30);
+    document.getElementById('ls-score').innerText=Math.floor(70+Math.random()*15);
+    document.getElementById('ls-students').innerText=Math.floor(1200+Math.random()*100);
+    document.getElementById('ls-savings').innerText=Math.floor(12000+Math.random()*1000);
+    document.getElementById('live-stats-card').style.opacity=0.8; setTimeout(()=>document.getElementById('live-stats-card').style.opacity=1,150);
+}, 8000);
+
+// Init Analytics Chart (Mocked with Canvas)
+const cChart = document.getElementById('coinsChart');
+if(cChart){
+    const cCtx = cChart.getContext('2d'); cChart.width=cChart.parentElement.clientWidth; cChart.height=140;
+    const vals=[320, 480, 210, 650, 890, 540, 760]; const maxV=Math.max(...vals); const bw=20, sp=cChart.width/7;
+    vals.forEach((v,i)=>{
+        const h=(v/maxV)*100; cCtx.fillStyle=(i===6)?'#c8ff00':'rgba(200,255,0,0.25)';
+        cCtx.fillRect(i*sp+(sp/2)-bw/2, 140-h, bw, h);
+    });
+}
+const rChart = document.getElementById('radarChart');
+if(rChart){
+    const rCtx = rChart.getContext('2d');
+    const cx=130, cy=130, r=100; const vs=[0.85, 0.72, 0.90, 0.68, 0.55, 0.78];
+    rCtx.strokeStyle='rgba(255,255,255,0.1)';
+    [0.25, 0.5, 0.75, 1].forEach(pct=>{ rCtx.beginPath(); for(let i=0;i<6;i++){ let a=(Math.PI*2/6)*i-Math.PI/2, px=cx+Math.cos(a)*r*pct, py=cy+Math.sin(a)*r*pct; if(i===0)rCtx.moveTo(px,py); else rCtx.lineTo(px,py); } rCtx.closePath(); rCtx.stroke(); });
+    rCtx.fillStyle='rgba(200,255,0,0.15)'; rCtx.strokeStyle='#c8ff00'; rCtx.beginPath();
+    vs.forEach((v,i)=>{ let a=(Math.PI*2/6)*i-Math.PI/2, px=cx+Math.cos(a)*r*v, py=cy+Math.sin(a)*r*v; if(i===0)rCtx.moveTo(px,py); else rCtx.lineTo(px,py); }); rCtx.closePath(); rCtx.fill(); rCtx.stroke();
+    rCtx.fillStyle='#c8ff00'; vs.forEach((v,i)=>{ let a=(Math.PI*2/6)*i-Math.PI/2, px=cx+Math.cos(a)*r*v, py=cy+Math.sin(a)*r*v; rCtx.beginPath(); rCtx.arc(px,py,3,0,Math.PI*2); rCtx.fill(); });
+    const lbls=["Scanning","Challenges","Streaks","Reporting","Social","Actions"]; rCtx.fillStyle='#8f8f9d'; rCtx.font='10px "JetBrains Mono"'; rCtx.textAlign="center";
+    lbls.forEach((l,i)=>{ let a=(Math.PI*2/6)*i-Math.PI/2, px=cx+Math.cos(a)*(r+15), py=cy+Math.sin(a)*(r+15); rCtx.fillText(l,px,py+3); });
+}
