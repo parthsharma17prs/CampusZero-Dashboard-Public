@@ -83,7 +83,26 @@ function showIncoming(caller, reason) { document.getElementById('inc-name-disp')
 
 function backspace() { let d=document.getElementById('dial-number'); if(d.innerText!=='_') d.innerText=d.innerText.slice(0,-1) || '_'; }
 function dial(num) { let d=document.getElementById('dial-number'); if(d.innerText==='_') d.innerText=num; else d.innerText+=num; }
-function startOutbound() { let num=document.getElementById('dial-number').innerText; if(num==='_') return; toggleCC(true, num, 'Outbound Call'); startTimer(); startWaveform(); }
+function startOutbound() { 
+    let num=document.getElementById('dial-number').innerText; 
+    if(num==='_') return; 
+    toggleCC(true, num, 'Outbound AI Call'); 
+    startTimer(); startWaveform();
+    
+    let promptText = document.getElementById('agent-script').innerText;
+    if (promptText.includes('Select a scenario')) promptText = '';
+    
+    fetch('http://localhost:3000/api/call', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phoneNumber: num, systemPrompt: promptText })
+    }).then(res => res.json()).then(data => {
+        if(data.error) showToast('coral', '❌', 'Call Failed', data.error);
+        else showToast('acid', '📞', 'Call Connecting', 'Wait for the ring!');
+    }).catch(err => {
+        showToast('coral', '❌', 'Server Error', 'Is the Node.js backend (node index.js) running on port 3000?');
+    });
+}
 function showActiveCall(name, reason) { toggleCC(true, name, reason); startTimer(); startWaveform(); }
 
 function startTimer() { callSeconds=0; clearInterval(callInterval); document.getElementById('ac-timer').innerText='00:00'; callInterval=setInterval(()=>{ callSeconds++; let m=Math.floor(callSeconds/60).toString().padStart(2,'0'), s=(callSeconds%60).toString().padStart(2,'0'); document.getElementById('ac-timer').innerText=`${m}:${s}`; },1000); }
